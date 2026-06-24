@@ -1,0 +1,1 @@
+"""Offline purchase reminders."""

@@ -1,0 +1,5 @@
+user:
+  name: "Your Name"
+  language: "en"
+  currency: "USD"
+  payment_method: "card"

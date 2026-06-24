@@ -1,0 +1,16 @@
+providers:
+- name: Telegram Payments
+  type: telegram
+  currencies:
+  - RUB
+  - USD
+  - EUR
+- name: Stripe
+  type: stripe
+  currencies:
+  - USD
+  - EUR
+- name: YooKassa
+  type: yookassa
+  currencies:
+  - RUB

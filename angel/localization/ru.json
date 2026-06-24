@@ -1,0 +1,15 @@
+{
+  "welcome": "Я — ваш Ангел-в-кармане, персональный ИИ на основе GRA-обнуления.",
+  "subscribe_prompt": "Для доступа ко всем функциям оформите подписку: /subscribe",
+  "subscription_active": "✅ Ваша подписка активна: {plan} (до {end_date}).",
+  "subscription_expired": "❌ Подписка истекла. Чтобы продлить, используйте /subscribe.",
+  "trial_activated": "🎁 Вам подключён бесплатный пробный период на {days} дн.",
+  "choose_plan": "Выберите подписку:",
+  "plan_basic": "Ангел-хранитель — 499 ₽/мес.",
+  "plan_family": "Семейный Ангел — 999 ₽/мес.",
+  "plan_lifetime": "Ангел навсегда — 9 990 ₽",
+  "buy_command": "Купить: /buy_{plan_id}",
+  "payment_success": "🎉 Оплата прошла! Ваш Ангел теперь полностью активен.",
+  "help": "Команды: /start, /subscribe, /status, /help",
+  "searching_coffee": "Ищу лучший кофе для вас..."
+}

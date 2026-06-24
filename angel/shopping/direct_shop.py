@@ -1,0 +1,1 @@
+"""Direct shop purchases."""

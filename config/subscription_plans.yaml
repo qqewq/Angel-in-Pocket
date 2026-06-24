@@ -1,0 +1,85 @@
+plans:
+- id: free_trial
+  name:
+    ru: Ангел-новичок
+    en: Newbie Angel
+  price: 0
+  period_days: 14
+  features:
+    ru:
+    - Базовый мониторинг
+    - Одна покупка в день
+    en:
+    - Basic monitoring
+    - One purchase per day
+  currencies:
+  - code: RUB
+    price: 0
+  - code: USD
+    price: 0
+  - code: EUR
+    price: 0
+- id: angel_basic
+  name:
+    ru: Ангел-хранитель
+    en: Guardian Angel
+  period_days: 30
+  features:
+    ru:
+    - Полный доступ к покупкам
+    - Автооплата счетов
+    - Прогноз здоровья
+    en:
+    - Full shopping access
+    - Auto bill payments
+    - Health predictions
+  currencies:
+  - code: RUB
+    price: 499
+    symbol: ₽
+  - code: USD
+    price: 5.99
+    symbol: $
+  - code: EUR
+    price: 5.49
+    symbol: €
+- id: angel_family
+  name:
+    ru: Семейный Ангел
+    en: Family Angel
+  period_days: 30
+  features:
+    ru:
+    - Всё из базового + 4 члена семьи
+    en:
+    - All basic + 4 family members
+  currencies:
+  - code: RUB
+    price: 999
+    symbol: ₽
+  - code: USD
+    price: 11.99
+    symbol: $
+  - code: EUR
+    price: 10.99
+    symbol: €
+- id: angel_lifetime
+  name:
+    ru: Ангел навсегда
+    en: Angel Forever
+  period_days: 36500
+  features:
+    ru:
+    - Пожизненный безлимит
+    en:
+    - Lifetime unlimited
+  currencies:
+  - code: RUB
+    price: 9990
+    symbol: ₽
+  - code: USD
+    price: 119.9
+    symbol: $
+  - code: EUR
+    price: 109.9
+    symbol: €

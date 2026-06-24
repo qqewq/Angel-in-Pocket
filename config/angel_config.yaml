@@ -1,0 +1,14 @@
+bot:
+  name: Angel-in-Pocket
+  default_language: en
+  supported_languages:
+  - ru
+  - en
+payments:
+  telegram_provider_token: YOUR_PROVIDER_TOKEN
+  stripe_secret_key: YOUR_STRIPE_KEY
+  default_currency: USD
+  supported_currencies:
+  - RUB
+  - USD
+  - EUR
