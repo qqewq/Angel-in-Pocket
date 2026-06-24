@@ -1,3 +1,6 @@
+https://orcid.org/my-orcid?orcid=0009-0004-1872-1153
+https://doi.org/10.5281/zenodo.20829385
+--------------
 # Angel-in-Pocket / Ангел-в-кармане
 
 **Билингвальный репозиторий** (Русский / English)
