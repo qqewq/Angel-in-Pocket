@@ -1,0 +1,240 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{float}
+
+\geometry{margin=1in}
+
+\title{Angel-in-Pocket: A Subject-Centered Multivert AI Architecture for Personal Guidance, Nullification, and Hierarchical Stability}
+\author{qqewq}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We propose Angel-in-Pocket, a subject-centered AI architecture designed to act as a personal guidance system for one specific user. Unlike general-purpose assistants or multi-agent market platforms, the architecture is organized around a single subject as the central reference frame. The system integrates retrieval, ranking, Bayesian uncertainty handling, nullification of noisy or parasitic signals, hierarchical stability scoring, and long-horizon prognostic modeling. We define the notion of a personal \emph{multivert}: a decision universe where all recommendations are interpreted relative to the subject's data, goals, constraints, health, and behavioral context. The framework is intended for practical applications in health monitoring, shopping assistance, service selection, lifestyle optimization, and scenario forecasting. We provide formal definitions, architectural modules, optimization objectives, and implementation pathways.
+\end{abstract}
+
+\section{Introduction}
+
+Large language models are increasingly used as assistants, but most existing systems remain reactive, generic, and weakly personalized. In contrast, Angel-in-Pocket aims to provide a persistent, individualized, and subject-centered AI companion that knows the user through explicit data, historical context, and preference modeling. The central idea is not a ``multiverse'' of equal agents, but a \emph{multivert}: a personal decision space organized around one concrete subject.
+
+This paper formalizes the concept and its relation to a family of GRA-inspired methods, including hierarchical stability, Bayesian ranking, swarm aggregation, resonance nullification, and subject-centric switching. The proposed architecture is not a medical authority or a legal authority; rather, it is a recommendation and forecasting system that helps the subject make better decisions.
+
+\section{Conceptual Motivation}
+
+The modern user faces information overload in markets, services, and health systems. In shopping, the user must compare prices, delivery conditions, quality, and hidden risks. In health, the user must interpret lab analyses, follow trends, and decide when to seek expert attention. In lifestyle planning, the user must balance sleep, work, diet, stress, and long-term goals.
+
+A subject-centered assistant can reduce this burden by acting as a permanent decision filter. The assistant does not merely answer questions; it continuously models the user's state, rejects low-quality signals, estimates uncertainty, and recommends actions that are locally and globally stable.
+
+\section{Problem Statement}
+
+Let a user subject be denoted by $u$. At time $t$, the subject is described by a state vector
+\[
+x_t = (h_t, b_t, e_t, s_t, p_t),
+\]
+where $h_t$ denotes health state, $b_t$ behavioral state, $e_t$ economic state, $s_t$ stress state, and $p_t$ preference state.
+
+Given a set of candidate actions or options
+\[
+A = \{a_1, a_2, \dots, a_n\},
+\]
+the system seeks an optimal action $a^*$ that maximizes user utility while minimizing risk and noise:
+\[
+a^* = \arg\max_{a_i \in A} \left[ U(a_i, u, x_t) - \lambda R(a_i, u, x_t) - \mu N(a_i) \right].
+\]
+Here $U$ is utility, $R$ is risk, $N$ is a nullification penalty capturing parasitic or misleading signals, and $\lambda, \mu \ge 0$ are tuning parameters.
+
+\section{Architecture}
+
+The system is organized into five layers.
+
+\subsection{Subject Core}
+The subject core stores user-specific attributes:
+\begin{itemize}[leftmargin=1.2em]
+    \item demographic profile,
+    \item habits and schedules,
+    \item budget constraints,
+    \item health history,
+    \item preferences and dislikes,
+    \item goals and priorities.
+\end{itemize}
+
+\subsection{Retrieval Layer}
+The retrieval layer gathers candidate options from available sources:
+\begin{itemize}[leftmargin=1.2em]
+    \item shopping platforms,
+    \item service directories,
+    \item health records,
+    \item uploaded documents,
+    \item user notes,
+    \item external APIs or local databases.
+\end{itemize}
+
+\subsection{Nullification Layer}
+The nullification layer removes low-trust or noisy candidates. It applies resonance-based filtering, chiral filtering, source trust estimation, and subject mismatch penalties. Formally, define:
+\[
+N(a_i) =
+\begin{cases}
+1, & \text{if } a_i \text{ passes the filters}, \\
+0, & \text{otherwise}.
+\end{cases}
+\]
+Only candidates with $N(a_i)=1$ are forwarded to ranking.
+
+\subsection{Ranking and Stability Layer}
+Each candidate is scored by a weighted utility function:
+\[
+S_i = w_p p_i + w_d d_i - w_q q_i + w_r r_i - w_s s_i - w_h h_i + w_c c_i,
+\]
+where:
+\begin{itemize}[leftmargin=1.2em]
+    \item $p_i$ is price,
+    \item $d_i$ is delivery cost or delay,
+    \item $q_i$ is quality,
+    \item $r_i$ is risk,
+    \item $s_i$ is stability,
+    \item $h_i$ is direct helpfulness,
+    \item $c_i$ is compatibility with the subject state.
+\end{itemize}
+
+The chosen candidate minimizes the effective score:
+\[
+a^* = \arg\min_{a_i \in A,\, N(a_i)=1} \tilde{S}_i,
+\]
+where
+\[
+\tilde{S}_i = \mathbb{E}[S_i] - \alpha \mathrm{Stab}(a_i).
+\]
+
+\subsection{Orchestration Layer}
+The orchestration layer combines multiple models or heuristics through swarm aggregation:
+\[
+\hat{S}_i = \frac{1}{M} \sum_{m=1}^{M} S_i^{(m)}.
+\]
+This allows the system to combine opinions from multiple agents, heuristics, or language models into one decision.
+
+\section{Bayesian Uncertainty Handling}
+
+To account for incomplete or noisy data, the system models candidate attributes as random variables:
+\[
+q_i \sim \mathcal{D}_q, \qquad r_i \sim \mathcal{D}_r, \qquad s_i \sim \mathcal{D}_s.
+\]
+Given observed data $D$, posterior belief is updated as:
+\[
+p(\theta \mid D) \propto p(D \mid \theta)p(\theta).
+\]
+
+This Bayesian layer is particularly important in health and shopping use cases, where one must distinguish between trustworthy evidence and isolated anomalies.
+
+\section{Multivert Definition}
+
+We define a \emph{multivert} as a subject-centered decision universe:
+\[
+\mathcal{M}(u) = \{E_u, H_u, B_u, P_u, R_u\},
+\]
+where:
+\begin{itemize}[leftmargin=1.2em]
+    \item $E_u$ is the economic subspace,
+    \item $H_u$ is the health subspace,
+    \item $B_u$ is the behavior and routine subspace,
+    \item $P_u$ is the prognostic subspace,
+    \item $R_u$ is the risk and robustness subspace.
+\end{itemize}
+
+All computations in the system are interpreted relative to $\mathcal{M}(u)$, rather than to a global objective detached from the subject. This is the key distinction between Angel-in-Pocket and generic recommendation engines.
+
+\section{Use Cases}
+
+\subsection{Shopping}
+The system compares products by price, quality, compatibility, delivery, and vendor trust. It removes suspicious offers and ranks the remainder by long-term value.
+
+\subsection{Health}
+The system stores and compares lab analyses over time, detects trends, and provides explanations in plain language. It highlights items that require medical review without replacing the clinician.
+
+\subsection{Lifestyle}
+The system recommends sleep adjustments, diet changes, exercise timing, and time allocation. It can forecast how a user's habit changes may affect future stability.
+
+\subsection{Forecasting}
+Given the current subject state, the system can simulate scenario trajectories:
+\[
+x_{t+1} = F(x_t, a_t, \eta_t),
+\]
+where $a_t$ is the recommended action and $\eta_t$ is environmental noise. The system evaluates multiple counterfactuals:
+\begin{itemize}[leftmargin=1.2em]
+    \item what happens if the user keeps current habits,
+    \item what happens if diet improves,
+    \item what happens if stress increases,
+    \item what happens if sleep becomes irregular.
+\end{itemize}
+
+\section{Practical Implementation}
+
+A practical implementation may include:
+\begin{itemize}[leftmargin=1.2em]
+    \item \texttt{backend/} for FastAPI services,
+    \item \texttt{frontend/} for web or desktop interfaces,
+    \item \texttt{core/} for subject profile, scoring, and stability modules,
+    \item \texttt{health/}, \texttt{shopping/}, and \texttt{services/} adapters,
+    \item \texttt{nullification/} and \texttt{swarm/} modules,
+    \item local memory or encrypted user storage.
+\end{itemize}
+
+The system can be extended to a desktop application, mobile client, or local-first deployment. A minimal viable prototype only requires:
+\begin{enumerate}[leftmargin=1.2em]
+    \item subject profile intake,
+    \item candidate retrieval,
+    \item nullification,
+    \item ranking,
+    \item explanation generation.
+\end{enumerate}
+
+\section{Discussion}
+
+The proposed architecture raises important questions of privacy, trust, and autonomy. Because the system knows intimate details about the subject, it must be designed with strong data protection and transparent recommendation logic. The goal is not surveillance but empowerment.
+
+Another issue is epistemic humility. The system should avoid claiming certainty in medical or life predictions. Instead, it should communicate probabilities, risk intervals, and confidence levels. A good Angel-in-Pocket does not dictate life; it helps the subject navigate it.
+
+\section{Conclusion}
+
+Angel-in-Pocket introduces a subject-centered multivert architecture for personalized AI guidance. Its core idea is to move from generic assistant behavior to a continuous, stable, and user-specific decision system. By combining Bayesian uncertainty handling, hierarchical stability, nullification of low-quality signals, and swarm aggregation, the system can support practical applications in shopping, health, and life planning.
+
+The framework is suitable for incremental development and can serve as a foundation for a real personal AI companion. Future work should focus on privacy-preserving memory, medically safe forecasting, and robust explainability.
+
+\section*{Acknowledgments}
+
+This work is inspired by the broader GRA research ecosystem and by the idea of a subject-centered AI companion.
+
+\begin{thebibliography}{9}
+
+\bibitem{gra-core}
+GRA-Core: Unified Hierarchical Stability Library. Repository concept and implementation framework.
+
+\bibitem{bayesian}
+Bayesian GRA methods for uncertainty-aware ranking and forecasting.
+
+\bibitem{swarm}
+GRA-LLM-Swarm Constructs and GRA-Swarm Optimization.
+
+\bibitem{nullification}
+GRA Resonance Nullification and Chiral Nullification methodologies.
+
+\bibitem{subject}
+SubjectSwap and subject-centered orchestration concepts.
+
+\end{thebibliography}
+
+\end{document}
