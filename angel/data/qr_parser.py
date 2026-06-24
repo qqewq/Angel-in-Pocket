@@ -1,1 +1,2 @@
-"""QR code parsing."""
+def parse_qr(image_bytes):
+    return {}

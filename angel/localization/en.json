@@ -5,10 +5,7 @@
   "subscription_expired": "❌ Subscription expired. Renew with /subscribe.",
   "trial_activated": "🎁 You've been granted a free {days}-day trial.",
   "choose_plan": "Choose a subscription:",
-  "plan_basic": "Guardian Angel — $5.99/month",
-  "plan_family": "Family Angel — $11.99/month",
-  "plan_lifetime": "Angel Forever — $119.90",
-  "buy_command": "Buy: /buy_{plan_id}",
+  "pay_on_website": "💳 Pay via Website",
   "payment_success": "🎉 Payment succeeded! Your Angel is now fully active.",
   "help": "Commands: /start, /subscribe, /status, /help",
   "searching_coffee": "Searching for the best coffee for you..."

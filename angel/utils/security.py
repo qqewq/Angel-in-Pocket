@@ -1,1 +1,2 @@
-"""Security and encryption utilities."""
+def encrypt(data):
+    return data

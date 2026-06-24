@@ -1,1 +1,2 @@
-"""Taxes and fines payment."""
+class TaxesFinesPayment:
+    pass

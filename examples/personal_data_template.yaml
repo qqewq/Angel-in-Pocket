@@ -1,5 +1,5 @@
-user:
-  name: "Your Name"
-  language: "en"
-  currency: "USD"
-  payment_method: "card"
+name: "User"
+age: 30
+contacts:
+  telegram_id: 123456
+  email: user@example.com

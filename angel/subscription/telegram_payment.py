@@ -2,11 +2,8 @@ from aiogram import Bot, types
 from aiogram.types import LabeledPrice
 from .manager import SubscriptionManager
 from angel.localization import locale
-import yaml
 import time
-
-with open("config/subscription_plans.yaml", encoding="utf-8") as f:
-    plans_data = yaml.safe_load(f)['plans']
+from .plans import plans
 
 class TelegramPaymentProcessor:
     def __init__(self, bot_token: str, provider_token: str, sub_manager: SubscriptionManager):
@@ -19,7 +16,7 @@ class TelegramPaymentProcessor:
 
     async def send_invoice(self, user_id: int, plan_id: str, user: types.User):
         lang = self._get_user_lang(user)
-        plan = next(p for p in plans_data if p['id'] == plan_id)
+        plan = next(p for p in plans if p['id'] == plan_id)
         currency = "RUB" if lang == "ru" else "USD"
         price_info = self.sub_manager.get_plan_for_currency(plan_id, currency)
         if not price_info:

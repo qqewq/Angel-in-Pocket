@@ -1,1 +1,3 @@
-"""Data fetching utilities."""
+class DataFetcher:
+    async def fetch(self):
+        return {}

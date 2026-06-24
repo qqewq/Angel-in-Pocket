@@ -1,1 +1,2 @@
-"""Data visualization utilities."""
+def plot_state(state):
+    pass

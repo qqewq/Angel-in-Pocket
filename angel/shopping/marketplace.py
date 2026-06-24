@@ -1,1 +1,2 @@
-"""Marketplace integration."""
+class MarketplaceChannel:
+    pass

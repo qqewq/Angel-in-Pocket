@@ -1,1 +1,2 @@
-"""Offline purchase reminders."""
+class OfflineReminder:
+    pass

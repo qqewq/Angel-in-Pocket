@@ -1,16 +1,6 @@
-providers:
-- name: Telegram Payments
-  type: telegram
-  currencies:
-  - RUB
-  - USD
-  - EUR
-- name: Stripe
-  type: stripe
-  currencies:
-  - USD
-  - EUR
-- name: YooKassa
-  type: yookassa
-  currencies:
-  - RUB
+# Каталог сервисов (заглушка)
+marketplaces:
+  - name: "Ozon"
+    api_url: "https://api.ozon.ru"
+  - name: "Wildberries"
+    api_url: "https://suppliers.wildberries.ru"

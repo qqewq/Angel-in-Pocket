@@ -1,7 +1,5 @@
-"""Tests for subscription module."""
-import pytest
-from angel.subscription.manager import SubscriptionManager
-
-def test_subscription_manager():
+def test_subscription_activation():
+    from angel.subscription.manager import SubscriptionManager
     sm = SubscriptionManager()
-    assert sm is not None
+    sm.activate_subscription("test", "angel_basic")
+    assert sm.is_subscription_active("test")

@@ -1,1 +1,2 @@
-"""Base payment interface."""
+class BasePayment:
+    pass

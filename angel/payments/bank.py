@@ -1,1 +1,2 @@
-"""Bank transfer processing."""
+class BankPayment:
+    pass

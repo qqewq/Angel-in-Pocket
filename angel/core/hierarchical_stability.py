@@ -1,1 +1,3 @@
-"""Hierarchical stability analysis."""
+class Stability:
+    def compute(self):
+        pass

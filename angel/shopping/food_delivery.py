@@ -1,1 +1,2 @@
-"""Food delivery integration."""
+class FoodDeliveryChannel:
+    pass

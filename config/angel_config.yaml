@@ -1,14 +1,37 @@
-bot:
-  name: Angel-in-Pocket
-  default_language: en
-  supported_languages:
-  - ru
-  - en
+me:
+  name: "Your Name"
+interfaces:
+  telegram:
+    enabled: true
+    token: "123456:ABC-DEF"
+  whatsapp:
+    enabled: true
+    phone_number_id: "123456789"
+    token: "EA..."
+    verify_token: "angel_verify"
+  web_app:
+    enabled: true
+    domain: "myangel.app"
+    port: 8000
+  email:
+    enabled: true
+    imap_host: "imap.gmail.com"
+    login: "angel@myangel.app"
+    password: "app_password"
+    smtp_host: "smtp.gmail.com"
+    smtp_port: 587
 payments:
-  telegram_provider_token: YOUR_PROVIDER_TOKEN
-  stripe_secret_key: YOUR_STRIPE_KEY
-  default_currency: USD
-  supported_currencies:
-  - RUB
-  - USD
-  - EUR
+  providers:
+    - name: "stripe"
+      api_key: "sk_live_xxx"
+    - name: "yookassa"
+      shop_id: "123"
+      secret_key: "test_xxx"
+    - name: "crypto"
+      wallet: "bc1q..."
+billing:
+  provider: "telegram"
+  provider_token: "381764678:TEST:..."
+  trial_days: 14
+user_management:
+  db_url: "postgresql://..."

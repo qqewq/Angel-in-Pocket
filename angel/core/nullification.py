@@ -1,1 +1,2 @@
-"""GRA-nullification core algorithm."""
+def nullify(state):
+    return state  # заглушка

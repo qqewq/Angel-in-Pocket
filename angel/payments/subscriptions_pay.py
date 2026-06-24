@@ -1,1 +1,2 @@
-"""Subscription payment handling."""
+class SubscriptionPayment:
+    pass

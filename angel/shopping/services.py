@@ -1,1 +1,2 @@
-"""Services booking."""
+class ServicesChannel:
+    pass

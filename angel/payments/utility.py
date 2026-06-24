@@ -1,1 +1,3 @@
-"""Utility bill payments."""
+class UtilityPayment:
+    async def pay_bill(self, bill):
+        pass

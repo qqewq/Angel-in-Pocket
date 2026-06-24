@@ -1,1 +1,2 @@
-"""Card tokenization."""
+class CardTokenPayment:
+    pass

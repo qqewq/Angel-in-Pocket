@@ -1,1 +1,3 @@
-"""Email scanning for bills and receipts."""
+class EmailScanner:
+    async def scan(self):
+        pass

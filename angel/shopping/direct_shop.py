@@ -1,1 +1,2 @@
-"""Direct shop purchases."""
+class DirectShopChannel:
+    pass

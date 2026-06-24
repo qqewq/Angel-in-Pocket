@@ -1,1 +1,3 @@
-"""Subject swapping in swarm."""
+class SubjectSwap:
+    def swap(self, state, characteristics):
+        return state

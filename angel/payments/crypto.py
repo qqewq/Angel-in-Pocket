@@ -1,1 +1,2 @@
-"""Cryptocurrency payments."""
+class CryptoPayment:
+    pass
